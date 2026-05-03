@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useLottie } from 'lottie-react';
 import { FACEBOOK_URL, INSTAGRAM_URL, TIKTOK_URL } from '../utils/urls';
 
 import '../stylesheets/ss-pages/Maintenance.css';
 
-function BeeOverlayAnimation({ animationData }) {
+function BeeOverlayAnimation({ animationData, onLoopComplete }) {
     const { View, setSpeed } = useLottie(
         {
             animationData,
             loop: true,
             autoplay: true,
+            onLoopComplete,
         },
         {
             width: '100%',
@@ -25,23 +26,48 @@ function BeeOverlayAnimation({ animationData }) {
 }
 
 function Maintenance() {
+    const HIDDEN_DELAY_MS = 5000;
+    const ENTER_ANIMATION_MS = 700;
+    const EXIT_ANIMATION_MS = 550;
+    const LOOPS_PER_APPEARANCE = 2;
+
     const [beeAnimationData, setBeeAnimationData] = useState(null);
     const [showAnimation, setShowAnimation] = useState(false);
+    const [animationPhase, setAnimationPhase] = useState('hidden');
     const [animationEntranceSide, setAnimationEntranceSide] = useState('from-right');
+    const [completedLoops, setCompletedLoops] = useState(0);
+    const timersRef = useRef([]);
 
     const openExternal = (url) => {
         window.open(url, '_blank', 'noopener,noreferrer');
     };
 
+    const scheduleTimer = useCallback((callback, delay) => {
+        const timerId = window.setTimeout(callback, delay);
+        timersRef.current.push(timerId);
+    }, []);
+
+    const clearAllTimers = useCallback(() => {
+        timersRef.current.forEach((timerId) => window.clearTimeout(timerId));
+        timersRef.current = [];
+    }, []);
+
+    const scheduleNextAppearance = useCallback(() => {
+        scheduleTimer(() => {
+            setAnimationEntranceSide(Math.random() > 0.5 ? 'from-left' : 'from-right');
+            setCompletedLoops(0);
+            setAnimationPhase('entering');
+            setShowAnimation(true);
+
+            scheduleTimer(() => {
+                setAnimationPhase('visible');
+            }, ENTER_ANIMATION_MS);
+        }, HIDDEN_DELAY_MS);
+    }, [ENTER_ANIMATION_MS, HIDDEN_DELAY_MS, scheduleTimer]);
+
     useEffect(() => {
         let isMounted = true;
-        const animationDelayMs = 5000;
-        const revealTimer = setTimeout(() => {
-            if (isMounted) {
-                setAnimationEntranceSide(Math.random() > 0.5 ? 'from-left' : 'from-right');
-                setShowAnimation(true);
-            }
-        }, animationDelayMs);
+        scheduleNextAppearance();
 
         const loadAnimation = async () => {
             try {
@@ -64,16 +90,45 @@ function Maintenance() {
 
         return () => {
             isMounted = false;
-            clearTimeout(revealTimer);
+            clearAllTimers();
         };
-    }, []);
+    }, [clearAllTimers, scheduleNextAppearance]);
+
+    useEffect(() => {
+        if (!showAnimation || animationPhase === 'exiting' || completedLoops < LOOPS_PER_APPEARANCE) {
+            return;
+        }
+
+        setAnimationPhase('exiting');
+        scheduleTimer(() => {
+            setShowAnimation(false);
+            setAnimationPhase('hidden');
+            scheduleNextAppearance();
+        }, EXIT_ANIMATION_MS);
+    }, [
+        completedLoops,
+        showAnimation,
+        animationPhase,
+        LOOPS_PER_APPEARANCE,
+        EXIT_ANIMATION_MS,
+        scheduleTimer,
+        scheduleNextAppearance,
+    ]);
+
+    const handleLoopComplete = useCallback(() => {
+        if (animationPhase === 'exiting') {
+            return;
+        }
+
+        setCompletedLoops((prevLoops) => prevLoops + 1);
+    }, [animationPhase]);
 
     return (
         <>
             <div className="maintenance-overlay" aria-hidden="true">
                 {showAnimation && beeAnimationData && (
-                    <div className={`maintenance-overlay__animation ${animationEntranceSide}`}>
-                        <BeeOverlayAnimation animationData={beeAnimationData} />
+                    <div className={`maintenance-overlay__animation ${animationEntranceSide} is-${animationPhase}`}>
+                        <BeeOverlayAnimation animationData={beeAnimationData} onLoopComplete={handleLoopComplete} />
                     </div>
                 )}
             </div>
