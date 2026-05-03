@@ -90,6 +90,12 @@ p, a, span, div {
     color: var(--text-2);
 }
 
+.highlight {
+    background: var(--accent-primary);
+    font-style: italic;
+    font-size: inherit;
+}
+
 
 
 

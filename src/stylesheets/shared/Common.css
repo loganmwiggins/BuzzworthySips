@@ -23,3 +23,6 @@
 .nowrap { white-space: nowrap; }
 .mb05 { margin-bottom: 0.5rem; }
 .mb1 { margin-bottom: 1rem; }
+
+.serif { font-family: var(--font-serif); }
+.sans-serif { font-family: var(--font-sans-serif); }
