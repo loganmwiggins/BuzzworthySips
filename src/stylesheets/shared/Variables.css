@@ -1,0 +1,23 @@
+:root {
+    /* Text colors */
+    --text-1: rgb(10, 10, 10);
+    --text-2: rgb(50, 50, 50);
+    --text-3: rgb(90, 90, 90);
+    --text-4: rgb(120, 120, 120);
+    --text-5: rgb(150, 150, 150);
+
+    --accent-primary: #FDE600;
+
+    /* Generic buttons */
+
+    /* Z-indexes */
+    --z-nav: 1500;
+
+    /* Filters */
+    --filter-icon: none;
+    --filter-white: invert(93%) sepia(100%) saturate(0%) hue-rotate(350deg) brightness(107%) contrast(102%);
+
+    /* Fonts */
+    --font-sans-serif: 'InterVariable', system-ui, sans-serif;
+    --font-serif: 'Merriweather', Georgia, serif;
+}
