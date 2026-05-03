@@ -5,7 +5,7 @@ import { FACEBOOK_URL, INSTAGRAM_URL, TIKTOK_URL } from '../utils/urls';
 import '../stylesheets/ss-pages/Maintenance.css';
 
 function BeeOverlayAnimation({ animationData }) {
-    const { View } = useLottie(
+    const { View, setSpeed } = useLottie(
         {
             animationData,
             loop: true,
@@ -17,11 +17,17 @@ function BeeOverlayAnimation({ animationData }) {
         }
     );
 
+    useEffect(() => {
+        setSpeed(1);
+    }, [setSpeed]);
+
     return View;
 }
 
 function Maintenance() {
     const [beeAnimationData, setBeeAnimationData] = useState(null);
+    const [showAnimation, setShowAnimation] = useState(false);
+    const [animationEntranceSide, setAnimationEntranceSide] = useState('from-right');
 
     const openExternal = (url) => {
         window.open(url, '_blank', 'noopener,noreferrer');
@@ -29,6 +35,13 @@ function Maintenance() {
 
     useEffect(() => {
         let isMounted = true;
+        const animationDelayMs = 5000;
+        const revealTimer = setTimeout(() => {
+            if (isMounted) {
+                setAnimationEntranceSide(Math.random() > 0.5 ? 'from-left' : 'from-right');
+                setShowAnimation(true);
+            }
+        }, animationDelayMs);
 
         const loadAnimation = async () => {
             try {
@@ -51,18 +64,19 @@ function Maintenance() {
 
         return () => {
             isMounted = false;
+            clearTimeout(revealTimer);
         };
     }, []);
 
     return (
         <>
-            {/* <div className="maintenance-overlay" aria-hidden="true">
-                {beeAnimationData && (
-                    <div className="maintenance-overlay__animation">
+            <div className="maintenance-overlay" aria-hidden="true">
+                {showAnimation && beeAnimationData && (
+                    <div className={`maintenance-overlay__animation ${animationEntranceSide}`}>
                         <BeeOverlayAnimation animationData={beeAnimationData} />
                     </div>
                 )}
-            </div> */}
+            </div>
 
             <div className="page-content-center maintenance-message">
                 <div className="df fdc aic g1 tac">
