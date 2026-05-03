@@ -16,5 +16,6 @@
     --filter-white: invert(93%) sepia(100%) saturate(0%) hue-rotate(350deg) brightness(107%) contrast(102%);
 
     /* Fonts */
-    --font-1: 'InterVariable', system-ui, sans-serif;
+    --font-sans-serif: 'InterVariable', system-ui, sans-serif;
+    --font-serif: 'Merriweather', Georgia, serif;
 }

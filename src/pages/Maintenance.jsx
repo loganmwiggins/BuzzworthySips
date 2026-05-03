@@ -4,7 +4,9 @@ import '../stylesheets/ss-pages/Maintenance.css';
 
 function Maintenance() {
     return (
-        <div>Maintenance</div>
+        <div className="page-content-center">
+            <p>We'll be back soon! Our site is currently under maintenance.</p>
+        </div>
     );
 }
 
