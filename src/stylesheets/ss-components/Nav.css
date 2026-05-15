@@ -4,13 +4,19 @@
     justify-content: space-between;
     background: var(--bg-1);
     border-bottom: 1px solid var(--border-2);
-    padding: 1rem;
+    padding: 2rem;
 }
 
 .nav-btn-ctnr {
     display: flex;
     align-items: center;
     gap: 2rem;
+}
+
+.nav-home-btn {
+    appearance: none;
+    border: none;
+    background: transparent;
 }
 
 .nav-btn {
