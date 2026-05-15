@@ -1,0 +1,24 @@
+.nav-ctnr {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--bg-1);
+    border-bottom: 1px solid var(--border-2);
+    padding: 1rem;
+}
+
+.nav-btn-ctnr {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    color: var(--text-1);
+
+    p {
+        font-weight: 300;
+    }
+}

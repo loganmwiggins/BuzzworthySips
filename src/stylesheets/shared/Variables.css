@@ -1,4 +1,11 @@
 :root {
+    /* Background colors */
+    --bg-1: rgb(255, 255, 255);
+    --bg-2: rgb(250, 250, 250);
+    --bg-3: rgb(245, 245, 245);
+    --bg-4: rgb(235, 235, 235);
+    --bg-5: rgb(220, 220, 220);
+
     /* Text colors */
     --text-1: rgb(10, 10, 10);
     --text-2: rgb(50, 50, 50);
@@ -6,6 +13,14 @@
     --text-4: rgb(120, 120, 120);
     --text-5: rgb(150, 150, 150);
 
+    /* Border colors */
+    --border-1: rgb(235, 235, 235);
+    --border-2: rgb(220, 220, 220);
+    --border-3: rgb(205, 205, 205);
+    --border-card: rgb(200, 200, 200);
+    --border-input: rgb(204, 204, 204);
+
+    /* Accent colors */
     --accent-primary: #FDE600;
 
     /* Generic buttons */

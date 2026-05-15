@@ -1,6 +1,6 @@
 @import url('/src/stylesheets/shared/Common.css');
 @import url('/src/stylesheets/shared/Variables.css');
-/* @import url('/src/stylesheets/shared/Buttons.css'); */
+@import url('/src/stylesheets/shared/Buttons.css');
 @import url('/src/stylesheets/shared/Fonts.css');
 
 html, body, #root { height: 100%; }
@@ -14,9 +14,9 @@ html, body, #root { height: 100%; }
 }
 
 html {
-    background: var(--primary-color);
+    background: var(--bg-1);
     color: var(--text-1);
-    font-family: var(--font-serif);
+    font-family: var(--font-sans-serif);
     font-size: 62.5%;
     overflow: hidden;
     box-sizing: border-box;
@@ -50,7 +50,6 @@ p, a, span, div {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: center; */
     gap: 4rem;
     padding: 4rem 2rem;
 }

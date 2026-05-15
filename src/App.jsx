@@ -10,13 +10,15 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
-          <Route path="/" element={<Navigate to="/maintenance" />} />
+          {/* <Route path="/" element={<Navigate to="/home" />} /> */}
           {/* <Route path="/home" element={<Home />} /> */}
-          <Route path="/maintenance" element={<Maintenance />} />
+          {/* <Route path="/maintenance" element={<Maintenance />} /> */}
+
+          <Route path="/" element={<Home />} />
         </Route>
 
         {/* Catch-all route for unknown paths */}
-        <Route path="*" element={<Navigate to="/maintenance" />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>
   );
