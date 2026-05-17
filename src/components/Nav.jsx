@@ -18,7 +18,7 @@ function Nav() {
 
     return (
         <div className="nav-ctnr">
-            <div className="df aic jcsb g4">
+            <div className="nav-content">
                 <button className="nav-home-btn" type="button" onClick={() => handleScrollToSection('home')}>
                     <p className="nav-title">Buzzworthy Sips</p>
                 </button>
@@ -36,6 +36,7 @@ function Nav() {
                         <p className="p-sm">Contact</p>
                     </button>
                 </div>
+                <div>x</div>
             </div>
         </div>
     );

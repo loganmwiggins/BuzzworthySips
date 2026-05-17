@@ -63,12 +63,20 @@
 
 .home-section-inner {
     width: 100%;
-    max-width: 900px;
+    max-width: 1200px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     gap: 1.5rem;
+}
+
+.home-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 4rem;
 }
 
 .home-section-kicker {
