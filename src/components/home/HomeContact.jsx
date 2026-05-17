@@ -1,5 +1,7 @@
 import React from 'react';
 
+import '../../stylesheets/ss-components/home/HomeContact.css';
+
 function HomeContact() {
     return (
         <section id="contact" className="home-section home-section-contact">

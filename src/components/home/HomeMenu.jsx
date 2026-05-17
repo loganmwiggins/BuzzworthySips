@@ -1,5 +1,7 @@
 import React from 'react';
 
+import '../../stylesheets/ss-components/home/HomeMenu.css';
+
 function HomeMenu() {
     return (
         <section id="menu" className="home-section home-section-menu">

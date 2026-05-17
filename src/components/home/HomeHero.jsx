@@ -1,5 +1,7 @@
 import React from 'react';
 
+import '../../stylesheets/ss-components/home/HomeHero.css';
+
 function HomeHero() {
     return (
         <section id="home" className="home-section home-section-hero">

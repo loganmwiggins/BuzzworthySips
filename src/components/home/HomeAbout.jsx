@@ -1,5 +1,7 @@
 import React from 'react';
 
+import '../../stylesheets/ss-components/home/HomeAbout.css';
+
 function HomeAbout() {
     return (
         <section id="about-us" className="home-section home-section-about">

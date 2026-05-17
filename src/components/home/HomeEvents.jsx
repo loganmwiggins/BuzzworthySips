@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import '../../stylesheets/ss-components/home/HomeEvents.css';
 import { formatEventDateLabel, formatEventTimeRangeLabel } from '../../utils/datetime';
 
 const EVENTS_PAGE_PATH = '/events';
