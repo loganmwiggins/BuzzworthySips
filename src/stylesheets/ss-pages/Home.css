@@ -52,7 +52,7 @@
 }
 
 .home-section {
-    min-height: 100vh;
+    /* min-height: 100vh; */
     width: 100%;
     display: flex;
     align-items: center;
@@ -94,6 +94,102 @@
 
 .home-section-events {
     background: linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
+}
+
+.home-events-scroll {
+    width: 100%;
+    display: flex;
+    gap: 1.5rem;
+    padding: 0.25rem 0.25rem 0.8rem;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-3) transparent;
+}
+
+.home-events-scroll::-webkit-scrollbar {
+    height: 0.75rem;
+}
+
+.home-events-scroll::-webkit-scrollbar-thumb {
+    background: var(--border-3);
+    border-radius: 999px;
+}
+
+.event-card {
+    flex: 0 0 min(31rem, 82vw);
+    scroll-snap-align: start;
+    border: 1px solid var(--border-2);
+    border-radius: 1.6rem;
+    overflow: hidden;
+    background: var(--bg-1);
+    box-shadow: 0 8px 22px rgb(10 10 10 / 8%);
+    text-align: left;
+}
+
+.event-card-image {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    display: block;
+}
+
+.event-card-content {
+    padding: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+
+.event-card-date {
+    color: var(--text-3);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.event-card-title {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    line-height: 1.2;
+}
+
+.event-card-time,
+.event-card-location {
+    color: var(--text-2);
+    font-weight: 500;
+}
+
+.event-card-cta {
+    appearance: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+    color: var(--text-1);
+    background:
+        radial-gradient(circle at 24% 20%, rgb(253 230 0 / 45%) 0%, transparent 42%),
+        var(--bg-3);
+    transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.event-card-cta:hover,
+.event-card-cta:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgb(10 10 10 / 14%);
+}
+
+.event-card-cta-icon {
+    width: 5.2rem;
+    height: 5.2rem;
+    border-radius: 999px;
+    background: var(--text-1);
+    color: var(--bg-1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.8rem;
+    line-height: 1;
 }
 
 .home-section-menu {
@@ -167,6 +263,12 @@
         padding: 5rem 2rem;
     }
 
+    .home-section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2rem;
+    }
+
     .home-hero-banner {
         padding: 2.25rem 1.75rem;
         gap: 1.5rem;
@@ -177,6 +279,18 @@
     .home-section {
         min-height: 75vh;
         padding: 4rem 1.75rem;
+    }
+
+    .home-events-scroll {
+        padding-bottom: 0.65rem;
+    }
+
+    .event-card {
+        flex-basis: min(28rem, 84vw);
+    }
+
+    .event-card-title {
+        font-size: 2rem;
     }
 
     .hero-cta-btn {
