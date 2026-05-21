@@ -1,7 +1,7 @@
 import React from 'react';
 
 import '../../stylesheets/ss-components/home/HomeFooter.css';
-import { FACEBOOK_URL, INSTAGRAM_URL, TIKTOK_URL } from '../../utils/urls';
+import { FACEBOOK_URL, INSTAGRAM_URL, TIKTOK_URL } from '../../utils/socials';
 
 function HomeFooter() {
     return (

@@ -36,6 +36,13 @@
     gap: 4rem;
 }
 
+.home-section-header-title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
 .home-section-kicker {
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -49,6 +56,10 @@
     font-weight: 500;
 }
 
+
+
+
+
 @media (max-width: 768px) {
     .home-section {
         min-height: 85vh;
@@ -61,6 +72,10 @@
         gap: 2rem;
     }
 }
+
+
+
+
 
 @media (max-width: 480px) {
     .home-section {

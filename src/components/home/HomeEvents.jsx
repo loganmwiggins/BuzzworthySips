@@ -94,7 +94,8 @@ function HomeEvents({ events = SAMPLE_EVENTS }) {
                         onClick={handleOpenFullCalendar}
                         aria-label="Open full event calendar"
                     >
-                        <span className="event-card-cta-icon" aria-hidden="true">{'->'}</span>
+                        {/* <span className="event-card-cta-icon" aria-hidden="true">{'->'}</span> */}
+                        <img src="/assets/icons/arrow-small-right.svg" draggable="false" className="event-card-cta-icon" />
                         <span className="p-sm">See all events</span>
                     </button>
                 </div>

@@ -1,4 +1,274 @@
 .home-section-contact {
+    position: relative;
+    overflow: hidden;
     background: linear-gradient(180deg, var(--bg-2) 0%, var(--bg-3) 100%);
     border-bottom: none;
+}
+
+.home-section-contact::before,
+.home-section-contact::after {
+    content: '';
+    position: absolute;
+    border-radius: 999px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.home-section-contact::before {
+    width: 34rem;
+    height: 34rem;
+    top: -14rem;
+    left: -12rem;
+    background: radial-gradient(circle, rgb(253 230 0 / 35%) 0%, rgb(253 230 0 / 0%) 66%);
+}
+
+.home-section-contact::after {
+    width: 28rem;
+    height: 28rem;
+    right: -10rem;
+    bottom: -12rem;
+    background: radial-gradient(circle, rgb(10 10 10 / 8%) 0%, rgb(10 10 10 / 0%) 72%);
+}
+
+.home-contact-inner {
+    position: relative;
+    z-index: 1;
+}
+
+.home-contact-header {
+    display: flex;
+    gap: 3rem;
+    align-items: stretch;
+}
+
+.home-contact-header > .home-section-header-title,
+.contact-visual-layout {
+    flex: 1;
+    min-width: 0;
+}
+
+.contact-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    cursor: pointer;
+    margin-top: 0.4rem;
+    min-height: 4rem;
+    width: fit-content;
+
+    h1 {
+        color: var(--text-1);
+    }
+
+    img {
+        width: 3.5rem;
+        height: 3.5rem;
+        opacity: .5;
+    }
+}
+
+.contact-header-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.contact-header-link:hover,
+.contact-header-link:focus-visible {
+    opacity: 0.88;
+}
+
+.contact-header-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.contact-methods-list {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.95rem;
+}
+
+.contact-method-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    text-align: left;
+    transition: transform 180ms ease, opacity 180ms ease;
+}
+
+.contact-method-link:hover,
+.contact-method-link:focus-visible {
+    transform: translateX(2px);
+    opacity: 0.82;
+}
+
+.contact-method-label {
+    color: var(--text-3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.55rem;
+}
+
+.contact-method-value {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    line-height: 1.2;
+}
+
+.contact-visual-layout {
+    min-height: 42rem;
+    position: relative;
+}
+
+.contact-visual-card {
+    position: absolute;
+    overflow: hidden;
+    border: 1px solid var(--border-2);
+    border-radius: 1.4rem;
+    background: var(--bg-1);
+    box-shadow: 0 15px 28px rgb(10 10 10 / 12%);
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+}
+
+.card-one {
+    width: 34%;
+    height: 68%;
+    top: 0;
+    left: 1%;
+    transform: rotate(-4deg);
+    animation: float-card-a 7s ease-in-out infinite;
+}
+
+.card-two {
+    width: 34%;
+    height: 66%;
+    top: 2%;
+    right: 3%;
+    transform: rotate(6deg);
+    animation: float-card-b 8s ease-in-out infinite;
+}
+
+.card-three {
+    width: 38%;
+    height: 62%;
+    bottom: 1%;
+    left: 24%;
+    transform: rotate(3deg);
+    animation: float-card-c 9s ease-in-out infinite;
+}
+
+.card-four {
+    width: 28%;
+    height: 44%;
+    right: 8%;
+    bottom: 4%;
+}
+
+@keyframes float-card-a {
+    0%,
+    100% {
+        transform: translateY(0) rotate(-4deg);
+    }
+    50% {
+        transform: translateY(-8px) rotate(-2deg);
+    }
+}
+
+@keyframes float-card-b {
+    0%,
+    100% {
+        transform: translateY(0) rotate(6deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(3deg);
+    }
+}
+
+@keyframes float-card-c {
+    0%,
+    100% {
+        transform: translateY(0) rotate(3deg);
+    }
+    50% {
+        transform: translateY(-9px) rotate(5deg);
+    }
+}
+
+@media (max-width: 1024px) {
+    .home-contact-header {
+        gap: 2.2rem;
+    }
+
+    .contact-visual-layout {
+        min-height: 34rem;
+    }
+
+    .contact-method-value {
+        font-size: 1.75rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .home-contact-header {
+        flex-direction: column;
+    }
+
+    .contact-visual-layout {
+        width: min(52rem, 100%);
+        min-height: 32rem;
+        min-width: 0;
+        margin-inline: auto;
+    }
+}
+
+@media (max-width: 560px) {
+    .contact-header {
+        width: 100%;
+    }
+
+    .contact-header-item {
+        width: 100%;
+        gap: 1.1rem;
+
+        img {
+            width: 3rem;
+            height: 3rem;
+        }
+
+        h1 {
+            font-size: clamp(2.2rem, 7.2vw, 2.9rem);
+        }
+    }
+
+    .contact-visual-layout {
+        min-height: 28rem;
+    }
+
+    .card-one {
+        width: 38%;
+    }
+
+    .card-two {
+        width: 38%;
+    }
+
+    .card-three {
+        width: 40%;
+    }
+
+    .card-four {
+        width: 30%;
+    }
 }
