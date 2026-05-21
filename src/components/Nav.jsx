@@ -36,7 +36,7 @@ function Nav() {
                         <p className="p-sm">Contact</p>
                     </button>
                 </div>
-                <div>x</div>
+                {/* <div>x</div> */}
             </div>
         </div>
     );
