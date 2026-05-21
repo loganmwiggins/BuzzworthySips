@@ -9,6 +9,12 @@ const CONTACT_EMAIL = 'buzzworthysips@gmail.com';
 const CONTACT_PHONE_DISPLAY = '(772) 333-0007';
 const CONTACT_PHONE_RAW = '+17723330007';
 
+const SOCIAL_PREVIEW_COPY = [
+    'Instagram for new drops',
+    'TikTok for behind-the-scenes content',
+    'Facebook for community updates',
+];
+
 function HomeContact() {
     const [socialIndex, setSocialIndex] = useState(0);
     
@@ -76,6 +82,10 @@ function HomeContact() {
                                 </motion.div>
                             </AnimatePresence>
                         </a>
+                        {/* <p className="home-section-copy home-contact-copy">
+                            This closing section uses the same card-heavy rhythm as the screenshot: one
+                            side for contact details, the other for a playful image collage.
+                        </p> */}
                         <br />
                         <div className="contact-methods-list" aria-label="Contact methods">
                             {contactMethods.map((method) => (
@@ -90,20 +100,29 @@ function HomeContact() {
                                 </a>
                             ))}
                         </div>
+                        <br />
+
+                        <div className="home-contact-social-previews" aria-label="Social preview copy">
+                            {SOCIAL_PREVIEW_COPY.map((item) => (
+                                <span key={item} className="home-contact-social-pill">
+                                    {item}
+                                </span>
+                            ))}
+                        </div>
                     </div>
 
                     <div className="contact-visual-layout" aria-hidden="true">
                         <div className="contact-visual-card card-one">
-                            <img src="/assets/events/morning-market.svg" alt="" draggable="false" />
+                            <span>Image placeholder</span>
                         </div>
                         <div className="contact-visual-card card-two">
-                            <img src="/assets/events/night-market.svg" alt="" draggable="false" />
+                            <span>Image placeholder</span>
                         </div>
                         <div className="contact-visual-card card-three">
-                            <img src="/assets/events/twilight-series.svg" alt="" draggable="false" />
+                            <span>Image placeholder</span>
                         </div>
                         <div className="contact-visual-card card-four">
-                            <img src="/assets/events/weekend-popup.svg" alt="" draggable="false" />
+                            <span>Image placeholder</span>
                         </div>
                     </div>
                 </div>

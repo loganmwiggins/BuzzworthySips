@@ -2,38 +2,40 @@
     scroll-behavior: smooth;
 }
 
+.app-content {
+    scroll-behavior: smooth;
+}
+
 .home-page-content {
     width: 100%;
     display: flex;
     flex-direction: column;
+    background:
+        radial-gradient(circle at top left, rgb(255 237 163 / 38%) 0%, transparent 30%),
+        radial-gradient(circle at 90% 10%, rgb(255 205 227 / 28%) 0%, transparent 22%),
+        linear-gradient(180deg, rgb(255 252 248) 0%, rgb(255 247 241) 42%, rgb(249 245 255) 100%);
 }
 
 .home-section {
-    /* min-height: 100vh; */
     width: 100%;
     display: flex;
-    align-items: center;
     justify-content: center;
-    padding: 6rem 2rem;
-    /* border-bottom: 1px solid var(--border-1); */
+    padding: clamp(4.5rem, 7vw, 8rem) 1.5rem;
 }
 
 .home-section-inner {
-    width: 100%;
-    max-width: 1200px;
+    width: min(1280px, 100%);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 1.5rem;
+    gap: 2rem;
 }
 
 .home-section-header {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
+    gap: 2rem;
     width: 100%;
-    gap: 4rem;
 }
 
 .home-section-header-title {
@@ -41,45 +43,55 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
+    max-width: 70rem;
+    text-align: left;
 }
 
 .home-section-kicker {
-    letter-spacing: 0.08em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--text-3);
 }
 
 .home-section-copy {
-    max-width: 62ch;
-    line-height: 1.6;
-    color: var(--text-2);
+    max-width: 66ch;
+    line-height: 1.7;
+    color: var(--text-3);
     font-weight: 500;
+    text-align: left;
 }
 
+.home-section h1,
+.home-section h2,
+.home-section h3 {
+    line-height: 1;
+}
 
+.home-section .serif {
+    letter-spacing: -0.02em;
+}
 
-
-
-@media (max-width: 768px) {
-    .home-section {
-        min-height: 85vh;
-        padding: 5rem 2rem;
-    }
-
+@media (max-width: 900px) {
     .home-section-header {
         flex-direction: column;
         align-items: flex-start;
-        gap: 2rem;
     }
 }
 
+@media (max-width: 768px) {
+    .home-section {
+        padding-inline: 1rem;
+    }
 
-
-
+    .home-section-header-title,
+    .home-section-copy {
+        max-width: 100%;
+    }
+}
 
 @media (max-width: 480px) {
     .home-section {
-        min-height: 75vh;
-        padding: 4rem 1.75rem;
+        padding-top: 4rem;
+        padding-bottom: 4rem;
     }
 }

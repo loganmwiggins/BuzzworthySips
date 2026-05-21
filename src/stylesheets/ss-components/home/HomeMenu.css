@@ -1,3 +1,79 @@
 .home-section-menu {
-    background: linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
+    background: linear-gradient(180deg, rgb(255 245 239) 0%, rgb(252 246 255) 100%);
+}
+
+.home-menu-header {
+    align-items: center;
+}
+
+.home-menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.2rem;
+}
+
+.menu-card {
+    border-radius: 2rem;
+    overflow: hidden;
+    border: 1px solid rgb(91 45 67 / 12%);
+    box-shadow: 0 14px 30px rgb(46 18 27 / 10%);
+    background: rgb(255 255 255 / 88%);
+}
+
+.menu-card-art {
+    min-height: 28rem;
+    padding: 1.4rem;
+    display: flex;
+    align-items: flex-start;
+}
+
+.menu-card-art span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1rem;
+    border-radius: 999px;
+    background: rgb(255 255 255 / 78%);
+    border: 1px solid rgb(91 45 67 / 10%);
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.menu-card-tone-a .menu-card-art {
+    background: linear-gradient(180deg, rgb(93 143 255) 0%, rgb(183 219 255) 100%);
+}
+
+.menu-card-tone-b .menu-card-art {
+    background: linear-gradient(180deg, rgb(255 194 56) 0%, rgb(255 234 173) 100%);
+}
+
+.menu-card-tone-c .menu-card-art {
+    background: linear-gradient(180deg, rgb(255 148 211) 0%, rgb(255 220 241) 100%);
+}
+
+.menu-card-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.menu-card-title {
+    font-size: clamp(2.1rem, 2.2vw, 2.7rem);
+}
+
+.menu-card-copy {
+    color: var(--text-3);
+}
+
+@media (max-width: 1024px) {
+    .home-menu-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .home-menu-grid {
+        grid-template-columns: 1fr;
+    }
 }
