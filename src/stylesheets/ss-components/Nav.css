@@ -1,17 +1,23 @@
 .nav-ctnr {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-nav);
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--bg-1);
-    border-bottom: 1px solid var(--border-2);
-    padding: 2rem;
+    padding: 1.4rem clamp(1.4rem, 3.5vw, 2.4rem);
+    background:
+        radial-gradient(circle at 14% 14%, rgb(255 229 177 / 54%) 0%, transparent 26%),
+        linear-gradient(180deg, rgb(255 252 248 / 95%) 0%, rgb(255 255 255 / 95%) 100%);
+    border-bottom: 1px solid rgb(91 45 67 / 10%);
+    backdrop-filter: blur(12px);
 }
 
 .nav-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 4rem;
+    gap: 2rem;
     width: 100%;
     max-width: 1200px;
 }
@@ -19,21 +25,91 @@
 .nav-btn-ctnr {
     display: flex;
     align-items: center;
-    gap: 4rem;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 0.8rem;
 }
 
 .nav-home-btn {
     appearance: none;
     border: none;
     background: transparent;
+    color: var(--text-1);
+    padding: 0;
+    cursor: pointer;
+    transition: color 180ms ease;
 }
 
-.nav-btn {
-    background: none;
-    border: none;
-    color: var(--text-1);
+/* .nav-title {
+    font-size: clamp(1.9rem, 2vw, 2.3rem);
+    line-height: 1.1;
+} */
 
-    p {
+.nav-btn {
+    appearance: none;
+    border: 1px solid rgb(91 45 67 / 12%);
+    background: rgb(255 255 255 / 82%);
+    color: var(--text-1);
+    border-radius: 999px;
+    padding: 0.75rem 1.15rem;
+    cursor: pointer;
+    transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+
+    span {
         font-weight: 300;
+    }
+}
+
+.nav-home-btn:hover,
+.nav-home-btn:focus-visible,
+.nav-btn:hover,
+.nav-btn:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgb(46 18 27 / 12%);
+}
+
+.nav-home-btn:hover,
+.nav-home-btn:focus-visible {
+    transform: none;
+    box-shadow: none;
+    color: rgb(91 45 67);
+}
+
+.nav-btn:hover,
+.nav-btn:focus-visible {
+    background: rgb(255 247 230 / 92%);
+}
+
+.nav-home-btn:focus-visible,
+.nav-btn:focus-visible {
+    outline: 2px solid rgb(91 45 67 / 36%);
+    outline-offset: 2px;
+}
+
+@media (max-width: 900px) {
+    .nav-content {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+
+    .nav-home-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .nav-btn-ctnr {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-ctnr {
+        padding: 1rem;
+    }
+
+    .nav-btn {
+        flex: 1 1 calc(50% - 0.8rem);
+        min-width: 13rem;
     }
 }
