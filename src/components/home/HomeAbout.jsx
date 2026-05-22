@@ -21,7 +21,7 @@ function HomeAbout() {
                 <div className="home-section-header home-about-header">
                     <div className="home-section-header-title">
                         <p className="p-sm home-section-kicker">About Us</p>
-                        <h1 className="serif">Service-First, Flavor-Forward</h1>
+                        <h1 className="serif">Service-First, <i>Flavor-Forward</i></h1>
                         {/* <p className="home-section-copy">
                             This area mirrors the screenshot’s mix of quote-style panels and soft imagery.
                             It can hold a brand story, founder note, or a photo collage without changing
@@ -33,9 +33,17 @@ function HomeAbout() {
                 <div className="home-about-layout">
                     <article className="home-about-quote-card">
                         <p className="home-about-quote-mark">“</p>
+                        {/* <h2 className="serif">
+                            Buzzworthy Sips is a family-owned dirty soda pop-up serving playful drinks and
+                            polished event setups across the Treasure Coast.
+                        </h2>
+                        <p className="p-sm home-about-quote-copy">
+                            We care about the drink, the setup, and the feeling the whole experience leaves behind.
+                        </p> */}
                         <h2 className="serif">
                             We care about the drink, the setup, and the feeling the whole experience leaves behind.
                         </h2>
+                        <br />
                         <p className="p-sm home-about-quote-copy">
                             Buzzworthy Sips is a family-owned dirty soda pop-up serving playful drinks and
                             polished event setups across the Treasure Coast.

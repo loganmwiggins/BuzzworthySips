@@ -10,9 +10,10 @@ const CONTACT_PHONE_DISPLAY = '(772) 333-0007';
 const CONTACT_PHONE_RAW = '+17723330007';
 
 const SOCIAL_PREVIEW_COPY = [
-    'Instagram for new drops',
-    'TikTok for behind-the-scenes content',
-    'Facebook for community updates',
+    // 'Instagram for new drops',
+    // 'TikTok for behind-the-scenes content',
+    // 'Facebook for community updates',
+    'Click here to inquire about a private event!',
 ];
 
 function HomeContact() {
@@ -121,9 +122,9 @@ function HomeContact() {
                         <div className="contact-visual-card card-three">
                             <span>Image placeholder</span>
                         </div>
-                        <div className="contact-visual-card card-four">
+                        {/* <div className="contact-visual-card card-four">
                             <span>Image placeholder</span>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

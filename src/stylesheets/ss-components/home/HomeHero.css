@@ -5,6 +5,7 @@
         radial-gradient(circle at 18% 18%, rgb(255 224 157 / 65%) 0%, transparent 22%),
         radial-gradient(circle at 78% 24%, rgb(251 182 255 / 55%) 0%, transparent 18%),
         linear-gradient(180deg, rgb(252 239 233) 0%, rgb(255 252 248) 100%);
+    /* padding: clamp(4rem, 8vw, 6rem) 0; */
 }
 
 .home-section-hero::before,
@@ -82,11 +83,21 @@
 
 .hero-cta-btn,
 .hero-secondary-btn {
+    display: flex;
+    align-items: center;
     border-radius: 999px;
     padding: 1rem 1.6rem;
-    font-size: 1.45rem;
+    font-size: 1.5rem;
     font-weight: 700;
     transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, border-color 180ms ease;
+
+    img {
+        width: 1.75rem;
+        height: 1.75rem;
+        margin-right: 0.6em;
+        /* filter: brightness(0) invert(1); */
+        transition: filter 180ms ease;
+    }
 }
 
 .hero-cta-btn {

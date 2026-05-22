@@ -22,20 +22,24 @@ function HomeHero() {
                     <div className="home-hero-copy">
                         <p className="p-sm home-section-kicker">Buzzworthy Sips</p>
                         <h1 className="serif home-hero-title">
-                            Bright drinks, bold layout, and a polished pop-up feel.
+                            Turning sips into a <i>buzzworthy</i> moment.
                         </h1>
-                        <p className="home-section-copy home-hero-copy-text">
+                        {/* <h1 className="serif home-hero-title">
+                            Bright drinks, bold flavors, and delicious snacks.
+                        </h1> */}
+                        {/* <p className="home-section-copy home-hero-copy-text">
                             This homepage is built to feel like an editorial brand site: colorful cards,
                             layered panels, and clear placeholders where you can swap in real product
                             photos, event imagery, and lifestyle shots later.
-                        </p>
-
+                        </p> */}
+                        <br />
                         <div className="home-hero-actions">
                             <button
                                 type="button"
                                 className="hero-cta-btn"
                                 onClick={() => document.getElementById('events')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
                             >
+                                <img src="/assets/icons/shop.svg" draggable="false" alt="Shop icon" style={{filter: 'brightness(0) invert(1)'}} />
                                 Find Us
                             </button>
                             <button
@@ -43,21 +47,22 @@ function HomeHero() {
                                 className="hero-secondary-btn"
                                 onClick={() => document.getElementById('menu')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
                             >
+                                <img src="/assets/icons/menu-food.svg" draggable="false" alt="Menu icon" />
                                 View Menu
                             </button>
                         </div>
 
-                        <div className="home-hero-highlights" aria-label="Hero highlights">
+                        {/* <div className="home-hero-highlights" aria-label="Hero highlights">
                             {HERO_HIGHLIGHTS.map((highlight) => (
                                 <span key={highlight} className="home-hero-pill">
                                     {highlight}
                                 </span>
                             ))}
-                        </div>
+                        </div> */}
                     </div>
 
                     <div className="home-hero-visual" aria-hidden="true">
-                        <div className="home-hero-feature-card">
+                        {/* <div className="home-hero-feature-card">
                             <div className="home-hero-feature-art">
                                 <span>Hero image placeholder</span>
                             </div>
@@ -81,7 +86,7 @@ function HomeHero() {
                                 <p className="p-xs home-hero-mini-label">Built for events</p>
                                 <h3 className="serif">Pop-up ready sections with clear callouts.</h3>
                             </article>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
 

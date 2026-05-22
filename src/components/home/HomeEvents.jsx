@@ -51,6 +51,7 @@ const SAMPLE_EVENTS = [
 
 const EVENT_BLURBS = [
     'Community markets',
+    'Work events',
     'Private catering',
     'Night market energy',
 ];
@@ -76,11 +77,11 @@ function HomeEvents({ events = SAMPLE_EVENTS }) {
                     </div>
 
                     <div className="home-events-actions">
-                        {EVENT_BLURBS.map((blurb) => (
+                        {/* {EVENT_BLURBS.map((blurb) => (
                             <span key={blurb} className="home-events-chip">
                                 {blurb}
                             </span>
-                        ))}
+                        ))} */}
                         <button className="btn-secondary" type="button">
                             <p className="p-sm">Need a Private Event?</p>
                         </button>
@@ -98,12 +99,19 @@ function HomeEvents({ events = SAMPLE_EVENTS }) {
 
                         <div className="home-events-feature-copy">
                             <p className="p-sm home-section-kicker">Book us for</p>
-                            <h2 className="serif">Market mornings, after-work pop-ups, and private pours.</h2>
-                            <p className="p-sm">
+                            {/* <h2 className="serif">Markets, events, pop-ups, and private pours</h2> */}
+                            {/* <p className="p-sm">
                                 This block is designed as a hero-supporting story panel. Drop in a real
                                 photo of your cart, table, or crowd, and the rest of the page keeps the
                                 same lively tone.
-                            </p>
+                            </p> */}
+                            <h2 className="serif">Polished event setups across the Treasure Coast</h2>
+                            <br />
+                            {EVENT_BLURBS.map((blurb) => (
+                                <span key={blurb} className="home-events-chip">
+                                    {blurb}
+                                </span>
+                            ))}
                         </div>
                     </article>
 
