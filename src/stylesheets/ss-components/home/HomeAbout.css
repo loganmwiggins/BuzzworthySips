@@ -68,6 +68,20 @@
 }
 
 .home-about-image-card-main {
+    position: relative;
+    overflow: hidden;
+}
+
+.home-about-image-main {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.home-about-image-card-main {
     grid-column: 1 / 2;
     grid-row: 1 / 3;
     min-height: 34rem;
@@ -99,6 +113,10 @@
     color: var(--text-3);
 }
 
+
+
+
+
 @media (max-width: 1024px) {
     .home-about-layout {
         grid-template-columns: 1fr;
@@ -112,6 +130,10 @@
         min-height: 28rem;
     }
 }
+
+
+
+
 
 @media (max-width: 768px) {
     .home-about-visuals,

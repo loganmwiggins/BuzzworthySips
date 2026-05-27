@@ -58,7 +58,13 @@ function HomeAbout() {
 
                     <div className="home-about-visuals" aria-hidden="true">
                         <div className="home-about-image-card home-about-image-card-main">
-                            <span>About image placeholder</span>
+                            {/* <span>Image placeholder</span> */}
+                            <img
+                                className="home-about-image-main"
+                                src="/assets/images/sisters-sips.jpeg"
+                                draggable="false"
+                                alt="Buzzworthy beverage setup for an event"
+                            />
                         </div>
                         <div className="home-about-image-card home-about-image-card-accent">
                             <span>Secondary image placeholder</span>
