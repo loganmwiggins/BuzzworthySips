@@ -4,18 +4,21 @@ import '../../stylesheets/ss-components/home/HomeMenu.css';
 
 const MENU_ITEMS = [
     {
-        name: 'Blackberry & Hibiscus',
-        note: 'Bright, floral, and easy to swap for a product shot.',
+        name: 'The Original',
+        category: 'Dr. Pepper Sips',
+        note: 'Vanilla, Coconut Creamer, & Fresh Lime',
         tone: 'tone-a',
     },
     {
-        name: 'Grapefruit & Yerba',
-        note: 'A punchy middle card with a high-energy palette.',
+        name: 'Graham Slam!',
+        category: 'Dirty Popcorn',
+        note: 'Fresh Popcorn, Chocolate Drizzle, Marshmallows, & Graham Crackers',
         tone: 'tone-b',
     },
     {
-        name: 'Tropical Papaya',
-        note: 'Soft pinks and citrus colors for a sweet finish.',
+        name: 'The Pink Drink',
+        category: 'Sprite Sips',
+        note: 'Cherry, Strawberry, ',
         tone: 'tone-c',
     },
 ];
@@ -46,7 +49,7 @@ function HomeMenu() {
                                 <span>Product image placeholder</span>
                             </div>
                             <div className="menu-card-body">
-                                <p className="p-sm home-section-kicker">Best seller</p>
+                                <p className="p-sm home-section-kicker">{item.category}</p>
                                 <h2 className="serif menu-card-title">{item.name}</h2>
                                 <p className="p-sm menu-card-copy">{item.note}</p>
                             </div>

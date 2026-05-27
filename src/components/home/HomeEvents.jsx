@@ -50,10 +50,22 @@ const SAMPLE_EVENTS = [
 ];
 
 const EVENT_BLURBS = [
-    'Community markets',
-    'Work events',
-    'Private catering',
-    'Night market energy',
+    {
+        label: 'Community markets',
+        icon: 'assets/icons/events/users-alt.svg'
+    },
+    {
+        label: 'Work events',
+        icon: 'assets/icons/events/building.svg'
+    },
+    {
+        label: 'Private catering',
+        icon: 'assets/icons/events/glass-cheers.svg'
+    },
+    {
+        label: 'Night market energy',
+        icon: 'assets/icons/events/moon.svg'
+    },
 ];
 
 function HomeEvents({ events = SAMPLE_EVENTS }) {
@@ -94,7 +106,12 @@ function HomeEvents({ events = SAMPLE_EVENTS }) {
                 <div className="home-events-layout">
                     <article className="home-events-feature-panel">
                         <div className="home-events-feature-art">
-                            <span>Schedule image placeholder</span>
+                            <img
+                                className="home-events-feature-image"
+                                src="/assets/images/tent-setup.jpeg"
+                                draggable="false"
+                                alt="Buzzworthy event setup"
+                            />
                         </div>
 
                         <div className="home-events-feature-copy">
@@ -108,9 +125,10 @@ function HomeEvents({ events = SAMPLE_EVENTS }) {
                             <h2 className="serif">Polished event setups across the Treasure Coast</h2>
                             <br />
                             {EVENT_BLURBS.map((blurb) => (
-                                <span key={blurb} className="home-events-chip">
-                                    {blurb}
-                                </span>
+                                <div key={blurb.label} className="home-events-chip">
+                                    <img src={blurb.icon} aria-hidden="true" draggable="false" />
+                                    {blurb.label}
+                                </div>
                             ))}
                         </div>
                     </article>
