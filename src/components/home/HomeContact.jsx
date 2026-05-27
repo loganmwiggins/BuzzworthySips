@@ -16,6 +16,39 @@ const SOCIAL_PREVIEW_COPY = [
     'Click here to inquire about a private event!',
 ];
 
+const CONTACT_VISUAL_CARDS = [
+    {
+        key: 'instagram',
+        socialName: 'Instagram',
+        cardClassName: 'card-one',
+        imageSrc: '/assets/images/popcorn-green.jpeg',
+        iconSrc: '/assets/icons/socials/instagram-bw.svg',
+        overlayRgb: '246 80 129',
+        baseRotate: -4,
+        hoverRotate: -1
+    },
+    {
+        key: 'tiktok',
+        socialName: 'TikTok',
+        cardClassName: 'card-two',
+        imageSrc: '/assets/images/ariana.jpeg',
+        iconSrc: '/assets/icons/socials/tiktok-bw.svg',
+        overlayRgb: '38 244 238',
+        baseRotate: 6,
+        hoverRotate: 3
+    },
+    {
+        key: 'facebook',
+        socialName: 'Facebook',
+        cardClassName: 'card-three',
+        imageSrc: '/assets/images/dog.jpeg',
+        iconSrc: '/assets/icons/socials/facebook-bw.svg',
+        overlayRgb: '24 119 242',
+        baseRotate: 3,
+        hoverRotate: 0
+    }
+];
+
 function HomeContact() {
     const [socialIndex, setSocialIndex] = useState(0);
     
@@ -103,28 +136,53 @@ function HomeContact() {
                         </div>
                         <br />
 
-                        <div className="home-contact-social-previews" aria-label="Social preview copy">
+                        {/* <div className="home-contact-social-previews" aria-label="Social preview copy">
                             {SOCIAL_PREVIEW_COPY.map((item) => (
                                 <span key={item} className="home-contact-social-pill">
                                     {item}
                                 </span>
                             ))}
-                        </div>
+                        </div> */}
                     </div>
 
-                    <div className="contact-visual-layout" aria-hidden="true">
-                        <div className="contact-visual-card card-one">
-                            <span>Image placeholder</span>
-                        </div>
-                        <div className="contact-visual-card card-two">
-                            <span>Image placeholder</span>
-                        </div>
-                        <div className="contact-visual-card card-three">
-                            <span>Image placeholder</span>
-                        </div>
-                        {/* <div className="contact-visual-card card-four">
-                            <span>Image placeholder</span>
-                        </div> */}
+                    <div className="contact-visual-layout">
+                        {CONTACT_VISUAL_CARDS.map((card) => {
+                            const social = SOCIALS_ARR.find((item) => item.name === card.socialName);
+
+                            return (
+                                <motion.a
+                                    key={card.key}
+                                    className={`contact-visual-card ${card.cardClassName}`}
+                                    href={social?.url ?? '#'}
+                                    target="_blank"
+                                    rel="noreferrer noopener"
+                                    aria-label={`Open ${card.socialName}`}
+                                    style={{ '--overlay-rgb': card.overlayRgb }}
+                                    initial={{ rotate: card.baseRotate, y: 0, scale: 1 }}
+                                    animate={{ rotate: card.baseRotate, y: 0, scale: 1 }}
+                                    whileHover={{ rotate: card.hoverRotate, y: -4, scale: 1.03 }}
+                                    whileTap={{ scale: 1.01 }}
+                                    transition={{ type: 'spring', stiffness: 220, damping: 20 }}
+                                >
+                                    <img
+                                        className="contact-visual-image"
+                                        src={card.imageSrc}
+                                        alt=""
+                                        loading="lazy"
+                                        draggable="false"
+                                    />
+                                    <div className="contact-visual-overlay">
+                                        <img
+                                            className="contact-visual-overlay-icon"
+                                            src={card.iconSrc}
+                                            alt=""
+                                            loading="lazy"
+                                            draggable="false"
+                                        />
+                                    </div>
+                                </motion.a>
+                            );
+                        })}
                     </div>
                 </div>
             </div>
