@@ -6,7 +6,7 @@ import { FACEBOOK_URL, INSTAGRAM_URL, TIKTOK_URL } from '../../utils/socials';
 function HomeFooter() {
     return (
         <footer id="footer" className="home-footer">
-            <div className="home-footer-card">
+            <div className="home-footer-inner">
                 <div className="home-footer-brand-row">
                     <div className="home-footer-logo-wrap">
                         <img src="/assets/logo/Logo.PNG" alt="Buzzworthy Sips logo" className="home-footer-logo" loading="lazy" />

@@ -25,6 +25,7 @@ function Nav() {
                     onClick={() => handleScrollToSection('home')}
                     aria-label="Scroll to hero section"
                 >
+                    <img src="/assets/icons/bee.svg" alt="Bee" draggable="false" />
                     <span className="nav-title serif">Buzzworthy Sips</span>
                 </button>
                 <div className="nav-btn-ctnr">
