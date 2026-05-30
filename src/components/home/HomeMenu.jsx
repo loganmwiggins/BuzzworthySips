@@ -27,7 +27,7 @@ function HomeMenu({ menuItems = [] }) {
                         <article key={item.id} className={`menu-card menu-card-tone-${String.fromCharCode(97 + (index % 3))}`} role="listitem">
                             <div className="menu-card-art">
                                 {item.imageSrc ? (
-                                    <img className="menu-card-image" src={item.imageSrc} alt={item.imageAlt || item.name} draggable="false" />
+                                    <img className="menu-card-image" src={item.imageSrc} alt={item.name} draggable="false" />
                                 ) : (
                                     <span>Product image placeholder</span>
                                 )}

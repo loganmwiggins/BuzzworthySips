@@ -9,8 +9,7 @@ const EVENT_FIELDS = `{
     startTime,
     endTime,
     location,
-    image,
-    "imageAlt": coalesce(image.alt, title)
+    image
 }`
 
 const MENU_ITEM_FIELDS = `{
@@ -20,8 +19,7 @@ const MENU_ITEM_FIELDS = `{
     description,
     price,
     sortOrder,
-    image,
-    "imageAlt": coalesce(image.alt, name)
+    image
 }`
 
 const HOME_EVENTS_QUERY = `*[_type == "event"] | order(date asc, startTime asc) ${EVENT_FIELDS}`;
@@ -37,7 +35,6 @@ function mapEvent(doc) {
         endTime: doc.endTime,
         location: doc.location,
         imageSrc: getSanityImageUrl(doc.image),
-        imageAlt: doc.imageAlt,
     }
 }
 
@@ -49,7 +46,6 @@ function mapMenuItem(doc) {
         description: doc.description,
         price: doc.price,
         imageSrc: getSanityImageUrl(doc.image),
-        imageAlt: doc.imageAlt,
     }
 }
 

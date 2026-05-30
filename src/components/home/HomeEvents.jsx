@@ -93,7 +93,7 @@ function HomeEvents({ events = [] }) {
                                     <span className="event-card-date-pill">{formatEventRelativeLabel(event.dateISO)}</span>
 
                                     {event.imageSrc ? (
-                                        <img className="event-card-image" src={event.imageSrc} alt={event.imageAlt || event.title} draggable="false" />
+                                        <img className="event-card-image" src={event.imageSrc} alt={event.title} draggable="false" />
                                     ) : null}
                                 </div>
 

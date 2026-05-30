@@ -55,21 +55,7 @@ export const eventType = defineType({
             options: {
                 hotspot: true,
             },
-            fields: [
-                defineField({
-                    name: 'alt',
-                    title: 'Alt Text',
-                    type: 'string',
-                    validation: (Rule) => Rule.required().min(5).max(180),
-                }),
-            ],
             validation: (Rule) => Rule.required(),
-        }),
-        defineField({
-            name: 'isFeatured',
-            title: 'Featured Event',
-            type: 'boolean',
-            initialValue: false,
         }),
     ],
     preview: {
