@@ -30,6 +30,19 @@ function HomeFooter() {
                     </a>
                 </div>
             </div>
+
+            <div className="home-footer-credit-row">
+                <a
+                    className="p-sm home-footer-credit-pill"
+                    href="https://www.loganwiggins.com"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="Visit Logan Wiggins website"
+                >
+                    <span className="home-footer-credit-pill-icon" aria-hidden="true" />
+                    Website created by Logan Wiggins
+                </a>
+            </div>
         </footer>
     );
 }
