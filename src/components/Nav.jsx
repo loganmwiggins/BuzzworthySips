@@ -1,9 +1,18 @@
 import React from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import '../stylesheets/ss-components/Nav.css';
 
 function Nav() {
+    const location = useLocation();
+    const navigate = useNavigate();
+
     const handleScrollToSection = (sectionId) => {
+        if (location.pathname !== '/') {
+            navigate('/', { state: { scrollTo: sectionId } });
+            return;
+        }
+
         const sectionElement = document.getElementById(sectionId);
 
         if (!sectionElement) {
@@ -16,13 +25,22 @@ function Nav() {
         });
     };
 
+    const handleHomeClick = () => {
+        if (location.pathname !== '/') {
+            navigate('/');
+            return;
+        }
+
+        handleScrollToSection('home');
+    };
+
     return (
         <header className="nav-ctnr">
             <div className="nav-content">
                 <button
                     className="nav-home-btn"
                     type="button"
-                    onClick={() => handleScrollToSection('home')}
+                    onClick={handleHomeClick}
                     aria-label="Scroll to hero section"
                 >
                     <img src="/assets/icons/bee.svg" alt="Bee" draggable="false" />

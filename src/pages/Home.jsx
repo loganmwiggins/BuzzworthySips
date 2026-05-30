@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import '../stylesheets/ss-pages/Home.css';
 
@@ -11,8 +12,29 @@ import HomeFooter from '../components/home/HomeFooter';
 import { fetchAvailableMenuItems, fetchHomeEvents } from '../utils/cms';
 
 function Home() {
+    const location = useLocation();
+    const navigate = useNavigate();
     const [events, setEvents] = useState([]);
     const [menuItems, setMenuItems] = useState([]);
+
+    useEffect(() => {
+        const sectionId = location.state?.scrollTo;
+
+        if (!sectionId) {
+            return;
+        }
+
+        const sectionElement = document.getElementById(sectionId);
+
+        if (sectionElement) {
+            sectionElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+            });
+        }
+
+        navigate(location.pathname, { replace: true, state: null });
+    }, [location.pathname, location.state, navigate]);
 
     useEffect(() => {
         let isMounted = true;
