@@ -6,49 +6,6 @@ import { formatEventDateLabel, formatEventTimeRangeLabel } from '../../utils/dat
 
 const EVENTS_PAGE_PATH = '/events';
 
-const SAMPLE_EVENTS = [
-    {
-        id: 'event-1',
-        title: 'Morning Market Pour Over',
-        dateISO: '2026-06-06',
-        startTime: '09:00',
-        endTime: '12:00',
-        location: 'Grandview Farmers Market',
-        imageSrc: '/assets/events/morning-market.svg',
-        imageAlt: 'Buzzworthy market stand setup in the morning',
-    },
-    {
-        id: 'event-2',
-        title: 'Twilight Nitro Series',
-        dateISO: '2026-06-12',
-        startTime: '18:30',
-        endTime: '21:00',
-        location: 'Franklin Park Conservatory',
-        imageSrc: '/assets/events/twilight-series.svg',
-        imageAlt: 'Evening event with glowing market stalls',
-    },
-    {
-        id: 'event-3',
-        title: 'Sunday Savory Pop-Up',
-        dateISO: '2026-06-21',
-        startTime: '10:30',
-        endTime: '14:00',
-        location: 'Short North Arts District',
-        imageSrc: '/assets/events/weekend-popup.svg',
-        imageAlt: 'Weekend popup with bright yellow signage',
-    },
-    {
-        id: 'event-4',
-        title: 'Downtown Night Market',
-        dateISO: '2026-06-27',
-        startTime: '17:00',
-        endTime: '22:00',
-        location: 'Columbus Commons',
-        imageSrc: '/assets/events/night-market.svg',
-        imageAlt: 'Night market scene with lit canopy booths',
-    },
-];
-
 const EVENT_BLURBS = [
     {
         label: 'Community markets',
@@ -68,7 +25,7 @@ const EVENT_BLURBS = [
     },
 ];
 
-function HomeEvents({ events = SAMPLE_EVENTS }) {
+function HomeEvents({ events = [] }) {
     const navigate = useNavigate();
 
     const handleOpenFullCalendar = () => {
@@ -136,8 +93,12 @@ function HomeEvents({ events = SAMPLE_EVENTS }) {
                     <div className="home-events-grid" role="list" aria-label="Upcoming event list">
                         {events.map((event, index) => (
                             <article key={event.id} className={`event-card event-card-tone-${(index % 4) + 1}`} role="listitem">
-                                <div className="event-card-image-placeholder" aria-hidden="true">
-                                    <span>Event image placeholder</span>
+                                <div className="event-card-image-placeholder">
+                                    {event.imageSrc ? (
+                                        <img className="event-card-image" src={event.imageSrc} alt={event.imageAlt || event.title} draggable="false" />
+                                    ) : (
+                                        <span>Event image placeholder</span>
+                                    )}
                                 </div>
 
                                 <div className="event-card-content">
@@ -148,6 +109,20 @@ function HomeEvents({ events = SAMPLE_EVENTS }) {
                                 </div>
                             </article>
                         ))}
+
+                        {events.length === 0 && (
+                            <article className="event-card event-card-tone-1" role="listitem">
+                                <div className="event-card-image-placeholder" aria-hidden="true">
+                                    <span>Fresh events coming soon</span>
+                                </div>
+
+                                <div className="event-card-content">
+                                    <p className="p-sm event-card-date">Stay tuned</p>
+                                    <h2 className="event-card-title">No upcoming events posted yet</h2>
+                                    <p className="p-sm event-card-time">Check back soon for the next calendar drop.</p>
+                                </div>
+                            </article>
+                        )}
                     </div>
                 </div>
             </div>

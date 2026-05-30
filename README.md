@@ -1,16 +1,56 @@
-# React + Vite
+# Buzzworthy React App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend for Buzzworthy Sips, built with React + Vite.
 
-Currently, two official plugins are available:
+## Local development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+1. Install dependencies:
 
-## React Compiler
+```bash
+npm install
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+2. Create an env file from the example:
 
-## Expanding the ESLint configuration
+```bash
+cp .env.example .env
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+3. Start the app:
+
+```bash
+npm run dev
+```
+
+## Sanity CMS integration
+
+The home and events views now load content from Sanity.
+
+- Events schema type: `event`
+- Menu schema type: `menuItem`
+
+Environment variables used by the frontend:
+
+- `VITE_SANITY_PROJECT_ID`
+- `VITE_SANITY_DATASET`
+- `VITE_SANITY_API_VERSION`
+
+If these are omitted, the app falls back to your current project defaults.
+
+## Dataset workflow (development vs production)
+
+Use separate datasets for local work and production content.
+
+- Local defaults: `development`
+- Production defaults: `production`
+
+Recommended setup:
+
+1. Keep local `.env` based on `.env.example` (development dataset).
+2. Set deployment environment variables to production values.
+3. Keep `.env.production.example` as a reference template only.
+
+If your local site cannot read Sanity data, add your frontend origin to Sanity CORS:
+
+- http://localhost:5173
+- http://127.0.0.1:5173

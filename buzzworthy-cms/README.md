@@ -1,9 +1,34 @@
-# Sanity Clean Content Studio
+# Buzzworthy Sanity Studio
 
-Congratulations, you have now installed the Sanity Content Studio, an open-source real-time content editing environment connected to the Sanity backend.
+Sanity Studio for managing Buzzworthy Sips content.
 
-Now you can do the following things:
+## Local setup
 
-- [Read “getting started” in the docs](https://www.sanity.io/docs/introduction/getting-started?utm_source=readme)
-- [Join the Sanity community](https://www.sanity.io/community/join?utm_source=readme)
-- [Extend and build plugins](https://www.sanity.io/docs/content-studio/extending?utm_source=readme)
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Create local env file:
+
+```bash
+cp .env.example .env
+```
+
+3. Start Studio:
+
+```bash
+npm run dev
+```
+
+## Dataset workflow
+
+This Studio is environment-driven:
+
+- Local default dataset: `development`
+- Production dataset: `production`
+
+Local work should be done in the development dataset.
+
+For production builds/deployments, set environment values to production (see `.env.production.example`).
