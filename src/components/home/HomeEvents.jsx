@@ -1,8 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import '../../stylesheets/ss-components/home/HomeEvents.css';
+import EmptyState from '../EmptyState';
 import { formatEventDateLabel, formatEventTimeRangeLabel } from '../../utils/datetime';
+import '../../stylesheets/ss-components/home/HomeEvents.css';
 
 const EVENTS_PAGE_PATH = '/events';
 
@@ -111,17 +112,11 @@ function HomeEvents({ events = [] }) {
                         ))}
 
                         {events.length === 0 && (
-                            <article className="event-card event-card-tone-1" role="listitem">
-                                <div className="event-card-image-placeholder" aria-hidden="true">
-                                    <span>Fresh events coming soon</span>
-                                </div>
-
-                                <div className="event-card-content">
-                                    <p className="p-sm event-card-date">Stay tuned</p>
-                                    <h2 className="event-card-title">No upcoming events posted yet</h2>
-                                    <p className="p-sm event-card-time">Check back soon for the next calendar drop.</p>
-                                </div>
-                            </article>
+                            <EmptyState
+                                icon="📅"
+                                headline="No upcoming events posted yet"
+                                subline="Check back soon for the next calendar drop."
+                            />
                         )}
                     </div>
                 </div>

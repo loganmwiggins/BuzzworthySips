@@ -1,5 +1,6 @@
 import React from 'react';
 
+import EmptyState from '../EmptyState';
 import '../../stylesheets/ss-components/home/HomeMenu.css';
 
 function HomeMenu({ menuItems = [] }) {
@@ -17,7 +18,7 @@ function HomeMenu({ menuItems = [] }) {
                         </p> */}
                     </div>
                     <button className="btn-action" type="button">
-                        <p className="p-sm">View Full Menu</p>
+                        <p className="p-sm">See All Menu Items</p>
                     </button>
                 </div>
 
@@ -41,16 +42,11 @@ function HomeMenu({ menuItems = [] }) {
                     ))}
 
                     {menuItems.length === 0 && (
-                        <article className="menu-card menu-card-tone-a" role="listitem">
-                            <div className="menu-card-art">
-                                <span>New sips are brewing</span>
-                            </div>
-                            <div className="menu-card-body">
-                                <p className="p-sm home-section-kicker">Menu</p>
-                                <h2 className="serif menu-card-title">No featured items yet</h2>
-                                <p className="p-sm menu-card-copy">Add menu items in Sanity to populate this section.</p>
-                            </div>
-                        </article>
+                        <EmptyState
+                            icon="🍹"
+                            headline="New sips are brewing"
+                            subline="Check back soon for the next menu update."
+                        />
                     )}
                 </div>
             </div>
