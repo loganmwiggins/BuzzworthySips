@@ -33,8 +33,8 @@
     padding-top: 0.4rem;
     padding-bottom: 1.2rem;
     gap: 2rem;
-    scrollbar-width: thin;
-    scrollbar-color: rgb(129 72 97 / 68%) rgb(255 236 245 / 78%);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 .events-sections::before,
@@ -71,22 +71,9 @@
 }
 
 .events-sections::-webkit-scrollbar {
-    width: 0.9rem;
-}
-
-.events-sections::-webkit-scrollbar-track {
-    background: rgb(255 236 245 / 78%);
-    border-radius: 999px;
-}
-
-.events-sections::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, rgb(165 87 119) 0%, rgb(116 63 99) 100%);
-    border-radius: 999px;
-    border: 2px solid rgb(255 236 245 / 78%);
-}
-
-.events-sections::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, rgb(145 76 104) 0%, rgb(93 47 77) 100%);
+    width: 0;
+    height: 0;
+    display: none;
 }
 
 .events-sections section {

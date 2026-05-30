@@ -1,8 +1,9 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+
 import { formatEventDateLabel, formatEventRelativeLabel, formatEventTimeRangeLabel } from '../utils/datetime';
 import { fetchAllEvents } from '../utils/cms';
-
 import '../stylesheets/ss-pages/Events.css';
 
 function isPastEvent(dateISO) {
@@ -21,6 +22,7 @@ function isPastEvent(dateISO) {
 
 function Events() {
     const navigate = useNavigate();
+    const prefersReducedMotion = useReducedMotion();
     const [events, setEvents] = useState([]);
     const [showTopFade, setShowTopFade] = useState(false);
     const [showBottomFade, setShowBottomFade] = useState(false);
@@ -59,6 +61,41 @@ function Events() {
             pastEvents: nextPastEvents,
         };
     }, [events]);
+
+    const getCardMotionProps = (index) => {
+        if (prefersReducedMotion) {
+            return {
+                initial: { opacity: 0 },
+                whileInView: { opacity: 1 },
+                viewport: { once: true, amount: 0.2 },
+                transition: {
+                    opacity: {
+                        duration: 0.34,
+                        ease: 'easeOut',
+                        delay: index * 0.05,
+                    },
+                },
+            };
+        }
+
+        return {
+            initial: { opacity: 0, y: 22 },
+            whileInView: { opacity: 1, y: 0 },
+            viewport: { once: true, amount: 0.2 },
+            transition: {
+                opacity: {
+                    duration: 0.5,
+                    ease: [0.22, 1, 0.36, 1],
+                    delay: index * 0.07,
+                },
+                y: {
+                    duration: 0.62,
+                    ease: [0.22, 1, 0.36, 1],
+                    delay: index * 0.07,
+                },
+            },
+        };
+    };
 
     useEffect(() => {
         const scrollElement = eventsSectionsRef.current;
@@ -101,10 +138,11 @@ function Events() {
                         {upcomingEvents.length > 0 ? (
                             <div className="events-list" role="list" aria-label="Upcoming events">
                                 {upcomingEvents.map((event, index) => (
-                                    <article
+                                    <motion.article
                                         key={event.id}
                                         className={`events-card events-card-upcoming events-card-tone-${(index % 4) + 1}`}
                                         role="listitem"
+                                        {...getCardMotionProps(index)}
                                     >
                                         <div className="events-card-image-wrap">
                                             <span className="events-card-date-pill">{formatEventRelativeLabel(event.dateISO)}</span>
@@ -124,7 +162,7 @@ function Events() {
                                             <p className="p-sm events-card-detail">🕓 {formatEventTimeRangeLabel(event.startTime, event.endTime)}</p>
                                             <p className="p-sm events-card-detail">📍 {event.location}</p>
                                         </div>
-                                    </article>
+                                    </motion.article>
                                 ))}
                             </div>
                         ) : (
@@ -141,10 +179,11 @@ function Events() {
                         {pastEvents.length > 0 ? (
                             <div className="events-list" role="list" aria-label="Past events">
                                 {pastEvents.map((event, index) => (
-                                    <article
+                                    <motion.article
                                         key={event.id}
                                         className={`events-card events-card-past events-card-tone-${(index % 4) + 1}`}
                                         role="listitem"
+                                        {...getCardMotionProps(index)}
                                     >
                                         <div className="events-card-image-wrap">
                                             {event.imageSrc ? (
@@ -163,7 +202,7 @@ function Events() {
                                             <p className="p-sm events-card-detail">🕓 {formatEventTimeRangeLabel(event.startTime, event.endTime)}</p>
                                             <p className="p-sm events-card-detail">📍 {event.location}</p>
                                         </div>
-                                    </article>
+                                    </motion.article>
                                 ))}
                             </div>
                         ) : (

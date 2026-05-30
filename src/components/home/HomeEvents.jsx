@@ -56,6 +56,7 @@ function HomeEvents({ events = [] }) {
                             <p className="p-sm">Need a Private Event?</p>
                         </button>
                         <button className="btn-action" type="button" onClick={handleOpenFullCalendar}>
+                            <img src="/assets/icons/shop.svg" draggable="false" alt="Shop icon" />
                             <p className="p-sm">See All Events</p>
                         </button>
                     </div>

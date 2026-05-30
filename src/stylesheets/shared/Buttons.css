@@ -3,12 +3,22 @@ button {
 }
 
 .btn-action {
+    display: flex;
+    align-items: center;
     background: var(--accent-primary);
     color: var(--text-1);
     border: none;
     padding: 1rem 1.75rem;
     border-radius: 999px;
     /* font-weight: 500; */
+
+    img {
+        width: 1.75rem;
+        height: 1.75rem;
+        margin-right: 0.6em;
+        /* filter: brightness(0) invert(1); */
+        transition: filter 180ms ease;
+    }
 }
 
 .btn-secondary {
@@ -18,4 +28,12 @@ button {
     padding: 1rem 1.75rem;
     border-radius: 999px;
     font-weight: 500;
+
+    img {
+        width: 1.75rem;
+        height: 1.75rem;
+        margin-right: 0.6em;
+        /* filter: brightness(0) invert(1); */
+        transition: filter 180ms ease;
+    }
 }
