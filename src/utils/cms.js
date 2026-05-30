@@ -24,7 +24,7 @@ const MENU_ITEM_FIELDS = `{
     "imageAlt": coalesce(image.alt, name)
 }`
 
-const UPCOMING_EVENTS_QUERY = `*[_type == "event" && date >= $today] | order(date asc, startTime asc) ${EVENT_FIELDS}`;
+const HOME_EVENTS_QUERY = `*[_type == "event"] | order(date asc, startTime asc) ${EVENT_FIELDS}`;
 const ALL_EVENTS_QUERY = `*[_type == "event"] | order(date asc, startTime asc) ${EVENT_FIELDS}`;
 const AVAILABLE_MENU_ITEMS_QUERY = `*[_type == "menuItem" && isAvailable == true] | order(sortOrder asc, name asc) ${MENU_ITEM_FIELDS}`;
 
@@ -54,10 +54,7 @@ function mapMenuItem(doc) {
 }
 
 export async function fetchHomeEvents(limit = HOME_EVENTS_LIMIT) {
-    const events = await sanityClient.fetch(UPCOMING_EVENTS_QUERY, {
-        today: new Date().toISOString().slice(0, 10),
-    })
-
+    const events = await sanityClient.fetch(HOME_EVENTS_QUERY);
     return events.slice(0, limit).map(mapEvent);
 }
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import EmptyState from '../EmptyState';
-import { formatEventDateLabel, formatEventTimeRangeLabel } from '../../utils/datetime';
+import { formatEventDateLabel, formatEventRelativeLabel, formatEventTimeRangeLabel } from '../../utils/datetime';
 import '../../stylesheets/ss-components/home/HomeEvents.css';
 
 const EVENTS_PAGE_PATH = '/events';
@@ -75,12 +75,7 @@ function HomeEvents({ events = [] }) {
                         <div className="home-events-feature-copy">
                             <p className="p-sm home-section-kicker">Book us for</p>
                             {/* <h2 className="serif">Markets, events, pop-ups, and private pours</h2> */}
-                            {/* <p className="p-sm">
-                                This block is designed as a hero-supporting story panel. Drop in a real
-                                photo of your cart, table, or crowd, and the rest of the page keeps the
-                                same lively tone.
-                            </p> */}
-                            <h2 className="serif">Polished event setups across the Treasure Coast</h2>
+                            <h2 className="serif">Buzzworthy event setups across the Treasure Coast</h2>
                             <br />
                             {EVENT_BLURBS.map((blurb) => (
                                 <div key={blurb.label} className="home-events-chip">
@@ -95,11 +90,11 @@ function HomeEvents({ events = [] }) {
                         {events.map((event, index) => (
                             <article key={event.id} className={`event-card event-card-tone-${(index % 4) + 1}`} role="listitem">
                                 <div className="event-card-image-placeholder">
+                                    <span className="event-card-date-pill">{formatEventRelativeLabel(event.dateISO)}</span>
+
                                     {event.imageSrc ? (
                                         <img className="event-card-image" src={event.imageSrc} alt={event.imageAlt || event.title} draggable="false" />
-                                    ) : (
-                                        <span>Event image placeholder</span>
-                                    )}
+                                    ) : null}
                                 </div>
 
                                 <div className="event-card-content">
