@@ -18,7 +18,8 @@ function HomeMenu({ menuItems = [] }) {
                         </p> */}
                     </div>
                     <button className="btn-action" type="button">
-                        <p className="p-sm">See All Menu Items</p>
+                        <img src="/assets/icons/menu-food.svg" draggable="false" alt="Menu icon" />
+                        <p className="p-sm">Browse the Full Menu</p>
                     </button>
                 </div>
 

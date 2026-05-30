@@ -21,7 +21,7 @@ function HomeAbout() {
                 <div className="home-section-header home-about-header">
                     <div className="home-section-header-title">
                         <p className="p-sm home-section-kicker">About Us</p>
-                        <h1 className="serif">Service-First, <i>Flavor-Forward</i></h1>
+                        <h1 className="serif">Service First, <i>Flavor Forward</i></h1>
                         {/* <p className="home-section-copy">
                             This area mirrors the screenshot’s mix of quote-style panels and soft imagery.
                             It can hold a brand story, founder note, or a photo collage without changing
@@ -58,16 +58,19 @@ function HomeAbout() {
 
                     <div className="home-about-visuals" aria-hidden="true">
                         <div className="home-about-image-card home-about-image-card-main">
-                            {/* <span>Image placeholder</span> */}
                             <img
                                 className="home-about-image-main"
                                 src="/assets/images/sisters-sips.jpeg"
                                 draggable="false"
-                                alt="Buzzworthy beverage setup for an event"
                             />
                         </div>
                         <div className="home-about-image-card home-about-image-card-accent">
-                            <span>Secondary image placeholder</span>
+                            <img
+                                className="home-about-image-accent"
+                                src="/assets/images/reese-pink.JPG"
+                                // src="/assets/images/sisters-dock.jpeg"
+                                draggable="false"
+                            />
                         </div>
 
                         <div className="home-about-stat-grid">
