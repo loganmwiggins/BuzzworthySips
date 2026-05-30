@@ -133,6 +133,37 @@
     padding: 1.25rem;
     display: flex;
     align-items: flex-start;
+    position: relative;
+    overflow: hidden;
+}
+
+.event-card-image-placeholder .event-card-date-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.65rem 0.95rem;
+    border-radius: 999px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.event-card-image-placeholder .event-card-date-pill {
+    position: relative;
+    z-index: 2;
+    color: rgb(70 27 43);
+    background: rgb(255 249 232 / 88%);
+    border: 1px solid rgb(91 45 67 / 15%);
+    backdrop-filter: blur(3px);
+}
+
+.event-card-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .event-card-content {

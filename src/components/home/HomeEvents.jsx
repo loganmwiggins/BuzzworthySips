@@ -1,53 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import EmptyState from '../EmptyState';
+import { formatEventDateLabel, formatEventRelativeLabel, formatEventTimeRangeLabel } from '../../utils/datetime';
 import '../../stylesheets/ss-components/home/HomeEvents.css';
-import { formatEventDateLabel, formatEventTimeRangeLabel } from '../../utils/datetime';
 
 const EVENTS_PAGE_PATH = '/events';
-
-const SAMPLE_EVENTS = [
-    {
-        id: 'event-1',
-        title: 'Morning Market Pour Over',
-        dateISO: '2026-06-06',
-        startTime: '09:00',
-        endTime: '12:00',
-        location: 'Grandview Farmers Market',
-        imageSrc: '/assets/events/morning-market.svg',
-        imageAlt: 'Buzzworthy market stand setup in the morning',
-    },
-    {
-        id: 'event-2',
-        title: 'Twilight Nitro Series',
-        dateISO: '2026-06-12',
-        startTime: '18:30',
-        endTime: '21:00',
-        location: 'Franklin Park Conservatory',
-        imageSrc: '/assets/events/twilight-series.svg',
-        imageAlt: 'Evening event with glowing market stalls',
-    },
-    {
-        id: 'event-3',
-        title: 'Sunday Savory Pop-Up',
-        dateISO: '2026-06-21',
-        startTime: '10:30',
-        endTime: '14:00',
-        location: 'Short North Arts District',
-        imageSrc: '/assets/events/weekend-popup.svg',
-        imageAlt: 'Weekend popup with bright yellow signage',
-    },
-    {
-        id: 'event-4',
-        title: 'Downtown Night Market',
-        dateISO: '2026-06-27',
-        startTime: '17:00',
-        endTime: '22:00',
-        location: 'Columbus Commons',
-        imageSrc: '/assets/events/night-market.svg',
-        imageAlt: 'Night market scene with lit canopy booths',
-    },
-];
 
 const EVENT_BLURBS = [
     {
@@ -68,7 +26,7 @@ const EVENT_BLURBS = [
     },
 ];
 
-function HomeEvents({ events = SAMPLE_EVENTS }) {
+function HomeEvents({ events = [] }) {
     const navigate = useNavigate();
 
     const handleOpenFullCalendar = () => {
@@ -98,7 +56,8 @@ function HomeEvents({ events = SAMPLE_EVENTS }) {
                             <p className="p-sm">Need a Private Event?</p>
                         </button>
                         <button className="btn-action" type="button" onClick={handleOpenFullCalendar}>
-                            <p className="p-sm">See All Events</p>
+                            <img src="/assets/icons/calendar-day.svg" draggable="false" alt="Calendar icon" />
+                            <p className="p-sm">View the Full Calendar</p>
                         </button>
                     </div>
                 </div>
@@ -117,12 +76,7 @@ function HomeEvents({ events = SAMPLE_EVENTS }) {
                         <div className="home-events-feature-copy">
                             <p className="p-sm home-section-kicker">Book us for</p>
                             {/* <h2 className="serif">Markets, events, pop-ups, and private pours</h2> */}
-                            {/* <p className="p-sm">
-                                This block is designed as a hero-supporting story panel. Drop in a real
-                                photo of your cart, table, or crowd, and the rest of the page keeps the
-                                same lively tone.
-                            </p> */}
-                            <h2 className="serif">Polished event setups across the Treasure Coast</h2>
+                            <h2 className="serif">Buzzworthy event setups across the Treasure Coast</h2>
                             <br />
                             {EVENT_BLURBS.map((blurb) => (
                                 <div key={blurb.label} className="home-events-chip">
@@ -136,8 +90,12 @@ function HomeEvents({ events = SAMPLE_EVENTS }) {
                     <div className="home-events-grid" role="list" aria-label="Upcoming event list">
                         {events.map((event, index) => (
                             <article key={event.id} className={`event-card event-card-tone-${(index % 4) + 1}`} role="listitem">
-                                <div className="event-card-image-placeholder" aria-hidden="true">
-                                    <span>Event image placeholder</span>
+                                <div className="event-card-image-placeholder">
+                                    <span className="event-card-date-pill">{formatEventRelativeLabel(event.dateISO)}</span>
+
+                                    {event.imageSrc ? (
+                                        <img className="event-card-image" src={event.imageSrc} alt={event.title} draggable="false" />
+                                    ) : null}
                                 </div>
 
                                 <div className="event-card-content">
@@ -148,6 +106,14 @@ function HomeEvents({ events = SAMPLE_EVENTS }) {
                                 </div>
                             </article>
                         ))}
+
+                        {events.length === 0 && (
+                            <EmptyState
+                                icon="📅"
+                                headline="No upcoming events posted yet"
+                                subline="Check back soon for the next calendar drop."
+                            />
+                        )}
                     </div>
                 </div>
             </div>

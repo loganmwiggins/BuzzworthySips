@@ -1,29 +1,9 @@
 import React from 'react';
 
+import EmptyState from '../EmptyState';
 import '../../stylesheets/ss-components/home/HomeMenu.css';
 
-const MENU_ITEMS = [
-    {
-        name: 'The Original',
-        category: 'Dr. Pepper Sips',
-        note: 'Vanilla, Coconut Creamer, & Fresh Lime',
-        tone: 'tone-a',
-    },
-    {
-        name: 'Graham Slam!',
-        category: 'Dirty Popcorn',
-        note: 'Fresh Popcorn, Chocolate Drizzle, Marshmallows, & Graham Crackers',
-        tone: 'tone-b',
-    },
-    {
-        name: 'The Pink Drink',
-        category: 'Sprite Sips',
-        note: 'Cherry, Strawberry, ',
-        tone: 'tone-c',
-    },
-];
-
-function HomeMenu() {
+function HomeMenu({ menuItems = [] }) {
     return (
         <section id="menu" className="home-section home-section-menu">
             <div className="home-section-inner">
@@ -38,23 +18,37 @@ function HomeMenu() {
                         </p> */}
                     </div>
                     <button className="btn-action" type="button">
-                        <p className="p-sm">View Full Menu</p>
+                        <img src="/assets/icons/menu-food.svg" draggable="false" alt="Menu icon" />
+                        <p className="p-sm">Browse the Full Menu</p>
                     </button>
                 </div>
 
                 <div className="home-menu-grid" role="list" aria-label="Featured menu items">
-                    {MENU_ITEMS.map((item) => (
-                        <article key={item.name} className={`menu-card menu-card-${item.tone}`} role="listitem">
+                    {menuItems.map((item, index) => (
+                        <article key={item.id} className={`menu-card menu-card-tone-${String.fromCharCode(97 + (index % 3))}`} role="listitem">
                             <div className="menu-card-art">
-                                <span>Product image placeholder</span>
+                                {item.imageSrc ? (
+                                    <img className="menu-card-image" src={item.imageSrc} alt={item.name} draggable="false" />
+                                ) : (
+                                    <span>Product image placeholder</span>
+                                )}
                             </div>
                             <div className="menu-card-body">
                                 <p className="p-sm home-section-kicker">{item.category}</p>
                                 <h2 className="serif menu-card-title">{item.name}</h2>
-                                <p className="p-sm menu-card-copy">{item.note}</p>
+                                <p className="p-sm menu-card-copy">{item.description}</p>
+                                {typeof item.price === 'number' && <p className="p-sm menu-card-copy">${item.price.toFixed(2)}</p>}
                             </div>
                         </article>
                     ))}
+
+                    {menuItems.length === 0 && (
+                        <EmptyState
+                            icon="🍹"
+                            headline="New sips are brewing"
+                            subline="Check back soon for the next menu update."
+                        />
+                    )}
                 </div>
             </div>
         </section>

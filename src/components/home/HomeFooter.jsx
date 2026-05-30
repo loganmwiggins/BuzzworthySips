@@ -31,7 +31,7 @@ function HomeFooter() {
                 </div>
             </div>
 
-            <div className="home-footer-credit-row">
+            {/* <div className="home-footer-credit-row">
                 <a
                     className="p-sm home-footer-credit-pill"
                     href="https://www.loganwiggins.com"
@@ -42,7 +42,7 @@ function HomeFooter() {
                     <span className="home-footer-credit-pill-icon" aria-hidden="true" />
                     Website created by Logan Wiggins
                 </a>
-            </div>
+            </div> */}
         </footer>
     );
 }

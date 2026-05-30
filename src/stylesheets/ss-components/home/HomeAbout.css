@@ -72,7 +72,21 @@
     overflow: hidden;
 }
 
+.home-about-image-card-accent {
+    position: relative;
+    overflow: hidden;
+}
+
 .home-about-image-main {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.home-about-image-accent {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -89,6 +103,9 @@
 }
 
 .home-about-image-card-accent {
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+    min-height: 34rem;
     background: linear-gradient(180deg, rgb(210 235 255) 0%, rgb(244 228 255) 100%);
 }
 
@@ -129,6 +146,10 @@
     .home-about-image-card-main {
         min-height: 28rem;
     }
+
+    .home-about-image-card-accent {
+        min-height: 28rem;
+    }
 }
 
 
@@ -142,6 +163,11 @@
     }
 
     .home-about-image-card-main {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    .home-about-image-card-accent {
         grid-column: auto;
         grid-row: auto;
     }
